@@ -124,7 +124,6 @@ autocmd BufNewFile,BufRead *.pp call Pl#Load()
 " Plugin settings
 "----------------------------------------------------------------------
 " CtrlP
-let g:ctrlp_map = '<leader>t'
 let g:ctrlp_max_files = 10000
 if has("unix")
     let g:ctrlp_user_command = {
