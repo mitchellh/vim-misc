@@ -126,13 +126,15 @@ autocmd BufNewFile,BufRead *.pp call Pl#Load()
 " CtrlP
 let g:ctrlp_map = '<leader>t'
 let g:ctrlp_max_files = 10000
-let g:ctrlp_user_command = {
-    \ 'types': {
-      \ 1: ['.git', 'cd %s && git ls-files . -co --exclude-standard'],
-      \ 2: ['.hg', 'hg --cwd %s locate -I .'],
-      \ },
-    \ 'fallback': 'find %s -type f'
+if has("unix")
+    let g:ctrlp_user_command = {
+        \ 'types': {
+            \ 1: ['.git', 'cd %s && git ls-files . -co --exclude-standard'],
+            \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+        \ },
+        \ 'fallback': 'find %s -type f | head -' . g:ctrlp_max_files
     \ }
+endif
 
 " EasyMotion
 let g:EasyMotion_leader_key = 'm'
