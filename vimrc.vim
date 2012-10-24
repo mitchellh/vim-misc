@@ -123,6 +123,9 @@ autocmd BufNewFile,BufRead *.pp call Pl#Load()
 "----------------------------------------------------------------------
 " Plugin settings
 "----------------------------------------------------------------------
+" EasyMotion
+let g:EasyMotion_leader_key = 'm'
+
 " Powerline
 let g:Powerline_symbols="fancy" " Fancy styling
 
