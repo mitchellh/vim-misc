@@ -136,7 +136,7 @@ if has("unix")
 endif
 
 " EasyMotion
-let g:EasyMotion_leader_key = 'm'
+let g:EasyMotion_leader_key = '<leader><leader>'
 
 " Powerline
 let g:Powerline_symbols="fancy" " Fancy styling
