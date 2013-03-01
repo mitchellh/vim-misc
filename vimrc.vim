@@ -5,6 +5,7 @@ let mapleader=";"         " The <leader> key
 set autoread              " Reload files that have not been modified
 set backspace=2           " Makes backspace not behave all retarded-like
 set colorcolumn=80        " Highlight 80 character limit
+set cursorline            " Highlight the line the cursor is on
 set hidden                " Allow buffers to be backgrounded without being saved
 set laststatus=2          " Always show the status bar
 set list                  " Show invisible characters
