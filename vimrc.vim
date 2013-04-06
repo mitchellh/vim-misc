@@ -1,3 +1,6 @@
+scriptencoding utf-8
+set encoding=utf-8
+
 "----------------------------------------------------------------------
 " Basic Options
 "----------------------------------------------------------------------
@@ -14,7 +17,6 @@ set relativenumber        " Show relative line numbers
 set ruler                 " Show the line number and column in the status bar
 set t_Co=256              " Use 256 colors
 set scrolloff=999         " Keep the cursor centered in the screen
-set showbreak=↪           " The character to put to show a line has been wrapped
 set showmatch             " Highlight matching braces
 set showmode              " Show the current mode on the open buffer
 set splitbelow            " Splits show up below by default
@@ -22,12 +24,16 @@ set splitright            " Splits go to the right by default
 set title                 " Set the title for gvim
 set visualbell            " Use a visual bell to notify us
 
+if !has("win32")
+    set showbreak=↪           " The character to put to show a line has been wrapped
+end
+
 syntax on                 " Enable filetype detection by syntax
 
 " Backup settings
-set directory=~/.vim/swap
-set backupdir=~/.vim/backup
-set undodir=~/.vim/undo
+execute "set directory=" . vim_home_path . "/swap"
+execute "set backupdir=" . vim_home_path . "/backup"
+execute "set undodir=" . vim_home_path . "/undo"
 set backup
 set undofile
 set writebackup
@@ -56,9 +62,17 @@ set wildignore+=*.swp         " Ignore vim backups
 " GUI settings
 if has("gui_running")
     colorscheme molokai
-    set guifont=Inconsolata\ for\ Powerline:h14
     set guioptions=egmt
-    set fuopt+=maxhorz
+
+    if has("win32")
+        set guifont=Inconsolata\ for\ Powerline:h11
+    else
+        set guifont=Inconsolata\ for\ Powerline:h14
+    endif
+
+    if exists("&fuopt")
+        set fuopt+=maxhorz
+    endif
 endif
 
 "----------------------------------------------------------------------
