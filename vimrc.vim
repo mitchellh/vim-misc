@@ -31,9 +31,9 @@ end
 syntax on                 " Enable filetype detection by syntax
 
 " Backup settings
-execute "set directory=" . vim_home_path . "/swap"
-execute "set backupdir=" . vim_home_path . "/backup"
-execute "set undodir=" . vim_home_path . "/undo"
+execute "set directory=" . g:vim_home_path . "/swap"
+execute "set backupdir=" . g:vim_home_path . "/backup"
+execute "set undodir=" . g:vim_home_path . "/undo"
 set backup
 set undofile
 set writebackup
