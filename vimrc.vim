@@ -62,7 +62,7 @@ set wildignore+=*.swp         " Ignore vim backups
 " GUI settings
 if has("gui_running")
     colorscheme molokai
-    set guioptions=egmt
+    set guioptions=cegmt
 
     if has("win32")
         set guifont=Inconsolata\ for\ Powerline:h11
@@ -122,6 +122,14 @@ cmap w!! %!sudo tee > /dev/null %
 " Expand in command mode to the path of the currently open file
 cnoremap %% <C-R>=expand('%:h').'/'<CR>
 
+" Buffer management
+nnoremap <leader>d   :bd<cr>
+
+" CtrlP
+nnoremap <leader>t :CtrlP<cr>
+nnoremap <leader>b :CtrlPBuffer<cr>
+nnoremap <leader>l :CtrlPLine<cr>
+
 "----------------------------------------------------------------------
 " Autocommands
 "----------------------------------------------------------------------
@@ -150,11 +158,48 @@ if has("unix")
     \ }
 endif
 
+let g:ctrlp_buffer_func = { 'enter': 'MyCtrlPMappings' }
+
+func! MyCtrlPMappings()
+    nnoremap <buffer> <silent> <c-@> :call <sid>DeleteBuffer()<cr>
+endfunc
+
+func! s:DeleteBuffer()
+  let line = getline('.')
+  let bufid = line =~ '\[\d\+\*No Name\]$' ? str2nr(matchstr(line, '\d\+'))
+        \ : fnamemodify(line[2:], ':p')
+  exec "bd" bufid
+  exec "norm \<F5>"
+endfunc<D-j>
+
 " EasyMotion
 let g:EasyMotion_leader_key = '<leader><leader>'
 
+" JSON
+let g:vim_json_syntax_conceal = 0
+
 " Powerline
 let g:Powerline_symbols="fancy" " Fancy styling
+
+" Startify
+let g:startify_list_order = ['bookmarks', 'files', 'sessions']
+let g:startify_bookmarks = [
+    \ '~/code/go/src/github.com/mitchellh/packer',
+    \ '~/code/hashicorp/vagrant',
+    \ '~/code/go/src/bitbucket.org/hashicorp/polaris',
+    \ '~/code/go/src/bitbucket.org/hashicorp/ps-build-manager',
+    \ ]
+let g:startify_custom_header = [
+    \ '                _ _       _          _ _ _     ',
+    \ '               (_) |     | |        | | | |    ',
+    \ '      _ __ ___  _| |_ ___| |__   ___| | | |__  ',
+    \ '     | ''_ ` _ \| | __/ __| ''_ \ / _ \ | | ''_ \ ',
+    \ '     | | | | | | | || (__| | | |  __/ | | | | |',
+    \ '     |_| |_| |_|_|\__\___|_| |_|\___|_|_|_| |_|',
+    \ '',
+    \ '  ======================================================',
+    \ '',
+    \ ]
 
 " Syntastic
 let g:syntastic_python_checker="pyflakes"

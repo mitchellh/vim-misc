@@ -214,3 +214,8 @@ end
 " EasyMotion colors
 hi link EasyMotionTarget ErrorMsg
 hi link EasyMotionShade  Comment
+
+" Startify colors
+hi link StartifyFile Identifier
+hi link StartifyPath Comment
+hi link StartifySlash Comment
