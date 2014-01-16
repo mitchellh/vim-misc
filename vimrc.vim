@@ -65,7 +65,7 @@ if has("gui_running")
     set guioptions=cegmt
 
     if has("win32")
-        set guifont=Inconsolata\ for\ Powerline:h11
+        set guifont=Inconsolata:h11
     else
         set guifont=Inconsolata\ for\ Powerline:h14
     endif
