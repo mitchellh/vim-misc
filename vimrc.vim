@@ -8,12 +8,11 @@ let mapleader=";"         " The <leader> key
 set autoread              " Reload files that have not been modified
 set backspace=2           " Makes backspace not behave all retarded-like
 set colorcolumn=80        " Highlight 80 character limit
-set cursorline            " Highlight the line the cursor is on
 set hidden                " Allow buffers to be backgrounded without being saved
 set laststatus=2          " Always show the status bar
 set list                  " Show invisible characters
 set listchars=tab:›\ ,eol:¬,trail:⋅ "Set the characters for the invisibles
-set relativenumber        " Show relative line numbers
+set number
 set ruler                 " Show the line number and column in the status bar
 set t_Co=256              " Use 256 colors
 set scrolloff=999         " Keep the cursor centered in the screen
@@ -23,6 +22,10 @@ set splitbelow            " Splits show up below by default
 set splitright            " Splits go to the right by default
 set title                 " Set the title for gvim
 set visualbell            " Use a visual bell to notify us
+
+" Customize session options. Namely, I don't want to save hidden and
+" unloaded buffers or empty windows.
+set sessionoptions="curdir,folds,help,options,tabpages,winsize"
 
 if !has("win32")
     set showbreak=↪           " The character to put to show a line has been wrapped
@@ -37,7 +40,6 @@ execute "set undodir=" . g:vim_home_path . "/undo"
 set backup
 set undofile
 set writebackup
-
 
 " Search settings
 set hlsearch   " Highlight results
@@ -60,7 +62,7 @@ set wildignore+=*.rbc         " Ignore Rubinius compiled files
 set wildignore+=*.swp         " Ignore vim backups
 
 " GUI settings
-if has("gui_running")
+if has("gui_running") || has("nvim")
     colorscheme molokai
     set guioptions=cegmt
 
@@ -101,13 +103,29 @@ nmap <leader>cd :cd %:h<CR>
 nmap <leader>lcd :lcd %:h<CR>
 
 " Shortcut to edit the vimrc
-nmap <silent> <leader>vimrc :e ~/.vimrc<CR>
+if has("nvim")
+    nmap <silent> <leader>vimrc :e ~/nvim/init.vim<CR>
+else
+    nmap <silent> <leader>vimrc :e ~/.vimrc<CR>
+endif
+
+" Shortcut to edit the vimmisc
+nmap <silent> <leader>vimmisc :execute "e " . g:vim_home_path . "/plugged/vim-misc/vimrc.vim"<CR>
 
 " Make navigating around splits easier
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-h> <C-w>h
-map <C-l> <C-w>l
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+if has('nvim')
+  " We have to do this to fix a bug with Neovim on OS X where C-h
+  " is sent as backspace for some reason.
+  nnoremap <BS> <C-W>h
+endif
+
+" Navigating tabs easier
+map <D-S-{> :tabprevious
+map <D-S-}> :tabprevious
 
 " Shortcut to yanking to the system clipboard
 map <leader>y "*y
@@ -124,6 +142,26 @@ cnoremap %% <C-R>=expand('%:h').'/'<CR>
 
 " Buffer management
 nnoremap <leader>d   :bd<cr>
+
+" Terminal mode
+if has("nvim")
+    tnoremap <esc> <C-\><C-n>
+    tnoremap jj <C-\><C-n>
+    tnoremap jJ <C-\><C-n>
+    tnoremap Jj <C-\><C-n>
+    tnoremap JJ <C-\><C-n>
+    tnoremap jk <C-\><C-n>
+    tnoremap jK <C-\><C-n>
+    tnoremap Jk <C-\><C-n>
+    tnoremap JK <C-\><C-n>
+    nnoremap <Leader>c :terminal <CR>
+endif
+
+" Tabs
+map <C-t> :tabnew<CR>
+map <C-c> :tabclose<CR>
+map <C-[> :tabprevious<CR>
+map <C-]> :tabnext<CR>
 
 " CtrlP
 nnoremap <leader>t :CtrlP<cr>
@@ -146,6 +184,10 @@ autocmd BufNewFile,BufRead *.pp call Pl#Load()
 "----------------------------------------------------------------------
 " Plugin settings
 "----------------------------------------------------------------------
+" Airline
+let g:airline_powerline_fonts = 1
+let g:airline_theme = "powerlineish"
+
 " CtrlP
 let g:ctrlp_max_files = 10000
 if has("unix")
@@ -172,34 +214,8 @@ func! s:DeleteBuffer()
   exec "norm \<F5>"
 endfunc<D-j>
 
-" EasyMotion
-let g:EasyMotion_leader_key = '<leader><leader>'
-
 " JSON
 let g:vim_json_syntax_conceal = 0
-
-" Powerline
-let g:Powerline_symbols="fancy" " Fancy styling
-
-" Startify
-let g:startify_list_order = ['bookmarks', 'files', 'sessions']
-let g:startify_bookmarks = [
-    \ '~/code/go/src/github.com/mitchellh/packer',
-    \ '~/code/hashicorp/vagrant',
-    \ '~/code/go/src/bitbucket.org/hashicorp/polaris',
-    \ '~/code/go/src/bitbucket.org/hashicorp/ps-build-manager',
-    \ ]
-let g:startify_custom_header = [
-    \ '                _ _       _          _ _ _     ',
-    \ '               (_) |     | |        | | | |    ',
-    \ '      _ __ ___  _| |_ ___| |__   ___| | | |__  ',
-    \ '     | ''_ ` _ \| | __/ __| ''_ \ / _ \ | | ''_ \ ',
-    \ '     | | | | | | | || (__| | | |  __/ | | | | |',
-    \ '     |_| |_| |_|_|\__\___|_| |_|\___|_|_|_| |_|',
-    \ '',
-    \ '  ======================================================',
-    \ '',
-    \ ]
 
 " Syntastic
 let g:syntastic_python_checker="pyflakes"
