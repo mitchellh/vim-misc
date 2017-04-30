@@ -63,7 +63,7 @@ set wildignore+=*.swp         " Ignore vim backups
 
 " GUI settings
 if has("gui_running") || has("nvim")
-    colorscheme molokai
+    colorscheme dracula
     set guioptions=cegmt
 
     if has("win32")
@@ -186,7 +186,8 @@ autocmd BufNewFile,BufRead *.pp call Pl#Load()
 "----------------------------------------------------------------------
 " Airline
 let g:airline_powerline_fonts = 1
-let g:airline_theme = "powerlineish"
+" Don't need to set this since Dracula includes a powerline theme
+" let g:airline_theme = "powerlineish"
 
 " CtrlP
 let g:ctrlp_max_files = 10000
