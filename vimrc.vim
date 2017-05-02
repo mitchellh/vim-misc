@@ -182,6 +182,21 @@ autocmd BufWinEnter * set foldlevel=999999
 autocmd BufNewFile,BufRead *.pp call Pl#Load()
 
 "----------------------------------------------------------------------
+" Helpers
+"----------------------------------------------------------------------
+
+" SyncStack shows the current syntax highlight group stack.
+nmap <leader>sp :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+    if !exists("*synstack")
+        return
+    endif
+
+    echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+    echo map(synstack(line('.'), col('.')), 'synIDattr(synIDtrans(v:val), "name")')
+endfunc
+
+"----------------------------------------------------------------------
 " Plugin settings
 "----------------------------------------------------------------------
 " Airline
