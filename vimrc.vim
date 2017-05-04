@@ -168,6 +168,13 @@ nnoremap <leader>t :CtrlP<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
 nnoremap <leader>l :CtrlPLine<cr>
 
+" Easymotion
+nmap <SPACE> <Plug>(easymotion-s)
+nmap <leader>j <Plug>(easymotion-bd-jk)
+nmap <leader>k <Plug>(easymotion-bd-jk)
+nmap <leader><leader>j <Plug>(easymotion-overwin-line)
+nmap <leader><leader>k <Plug>(easymotion-overwin-line)
+
 "----------------------------------------------------------------------
 " Autocommands
 "----------------------------------------------------------------------
@@ -176,10 +183,6 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 " Don't fold anything.
 autocmd BufWinEnter * set foldlevel=999999
-
-" Reload Powerline when we read a Puppet file. This works around
-" some weird bogus bug.
-autocmd BufNewFile,BufRead *.pp call Pl#Load()
 
 "----------------------------------------------------------------------
 " Helpers
