@@ -157,11 +157,13 @@ if has("nvim")
     nnoremap <Leader>c :terminal <CR>
 endif
 
-" Tabs
-map <C-t> :tabnew<CR>
-map <C-c> :tabclose<CR>
-map <C-[> :tabprevious<CR>
-map <C-]> :tabnext<CR>
+if has("gui_running")
+    " Tabs
+    map <C-t> :tabnew<CR>
+    map <C-c> :tabclose<CR>
+    map <C-[> :tabprevious<CR>
+    map <C-]> :tabnext<CR>
+endif
 
 " CtrlP
 nnoremap <leader>t :CtrlP<cr>
