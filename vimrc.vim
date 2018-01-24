@@ -235,6 +235,9 @@ func! s:DeleteBuffer()
   exec "norm \<F5>"
 endfunc<D-j>
 
+" JavaScript & JSX
+let g:jsx_ext_required = 0
+
 " JSON
 let g:vim_json_syntax_conceal = 0
 
