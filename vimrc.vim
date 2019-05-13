@@ -6,7 +6,7 @@ set encoding=utf-8
 "----------------------------------------------------------------------
 let mapleader=";"         " The <leader> key
 set autoread              " Reload files that have not been modified
-set backspace=2           " Makes backspace not behave all retarded-like
+set backspace=2           " Makes backspace behave like you'd expect
 set colorcolumn=80        " Highlight 80 character limit
 set hidden                " Allow buffers to be backgrounded without being saved
 set laststatus=2          " Always show the status bar
