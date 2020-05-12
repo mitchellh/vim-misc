@@ -63,6 +63,7 @@ set wildignore+=*.swp         " Ignore vim backups
 
 " GUI settings
 if has("gui_running") || has("nvim")
+    packadd! dracula
     colorscheme dracula
     set guioptions=cegmt
 
