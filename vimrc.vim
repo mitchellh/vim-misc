@@ -70,7 +70,7 @@ if has("gui_running") || has("nvim")
     if has("win32")
         set guifont=Inconsolata:h11
     else
-        set guifont=Inconsolata\ for\ Powerline:h14
+        set guifont=Monaco\ for\ Powerline:h12
     endif
 
     if exists("&fuopt")
