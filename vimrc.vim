@@ -62,20 +62,22 @@ set wildignore+=*.rbc         " Ignore Rubinius compiled files
 set wildignore+=*.swp         " Ignore vim backups
 
 " GUI settings
-if has("gui_running") || has("nvim")
-    packadd! dracula
-    colorscheme dracula
-    set guioptions=cegmt
+let g:dracula_italic = 0 " We don't support italics in our terminal
+packadd! dracula
+colorscheme dracula
 
-    if has("win32")
-        set guifont=Inconsolata:h11
-    else
-        set guifont=Monaco\ for\ Powerline:h12
-    endif
+" This is required to force 24-bit color since I use a modern terminal.
+set termguicolors
 
-    if exists("&fuopt")
-        set fuopt+=maxhorz
-    endif
+set guioptions=cegmt
+if has("win32")
+    set guifont=Inconsolata:h11
+else
+    set guifont=Monaco\ for\ Powerline:h12
+endif
+
+if exists("&fuopt")
+    set fuopt+=maxhorz
 endif
 
 "----------------------------------------------------------------------
