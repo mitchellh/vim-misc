@@ -40,11 +40,6 @@ execute "set undodir=" . g:vim_home_path . "/undo"
 set backup
 set undofile
 set writebackup
-if !isdirectory(g:vim_home_path . "/swap")
-    call mkdir(g:vim_home_path . "/swap", "p")
-    call mkdir(g:vim_home_path . "/backup", "p")
-    call mkdir(g:vim_home_path . "/undo", "p")
-endif
 
 " Search settings
 set hlsearch   " Highlight results
