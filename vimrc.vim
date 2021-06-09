@@ -256,8 +256,9 @@ let g:jsx_ext_required = 0
 let g:vim_json_syntax_conceal = 0
 
 "----------------------------------------------------------------------
-" Check neovim
+" Neovim
 "----------------------------------------------------------------------
+" In neovim, we configure more things via Lua
 if has("nvim")
     lua require("vim-misc")
 endif
