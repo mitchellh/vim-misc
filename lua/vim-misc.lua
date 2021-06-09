@@ -1,3 +1,10 @@
+--[[
+-- Notes:
+--
+-- When updating TreeSitter, you'll want to update the parsers using
+-- :TSUpdate manually. Or, you can call :TSInstall to install new parsers.
+-- Run :checkhealth nvim_treesitter to see what parsers are setup.
+--]]
 ---------------------------------------------------------------------
 -- LSP Clients
 ---------------------------------------------------------------------
