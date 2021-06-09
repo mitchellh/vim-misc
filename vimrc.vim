@@ -255,8 +255,9 @@ let g:jsx_ext_required = 0
 " JSON
 let g:vim_json_syntax_conceal = 0
 
-" Syntastic
-let g:syntastic_python_checker="pyflakes"
-let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'active_filetypes': [],
-                           \ 'passive_filetypes': ['cpp', 'go', 'puppet'] }
+"----------------------------------------------------------------------
+" Check neovim
+"----------------------------------------------------------------------
+if has("nvim")
+    lua require("vim-misc")
+endif
