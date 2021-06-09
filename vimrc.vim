@@ -62,9 +62,7 @@ set wildignore+=*.rbc         " Ignore Rubinius compiled files
 set wildignore+=*.swp         " Ignore vim backups
 
 " GUI settings
-let g:dracula_italic = 0 " We don't support italics in our terminal
-packadd! dracula
-colorscheme dracula
+colorscheme nord
 
 " This is required to force 24-bit color since I use a modern terminal.
 set termguicolors
