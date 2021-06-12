@@ -259,8 +259,4 @@ let g:vim_json_syntax_conceal = 0
 " In neovim, we configure more things via Lua
 if has("nvim")
     lua require("vim-misc")
-
-    " Fold via treesitter
-    set foldmethod=expr
-    set foldexpr=nvim_treesitter#foldexpr()
 endif
