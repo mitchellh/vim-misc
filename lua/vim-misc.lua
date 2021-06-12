@@ -45,3 +45,12 @@ local servers = { "gopls" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
 end
+
+---------------------------------------------------------------------
+-- Treesitter
+---------------------------------------------------------------------
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+  },
+}
