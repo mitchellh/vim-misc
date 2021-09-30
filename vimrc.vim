@@ -62,7 +62,7 @@ set wildignore+=*.rbc         " Ignore Rubinius compiled files
 set wildignore+=*.swp         " Ignore vim backups
 
 " GUI settings
-colorscheme nord
+colorscheme onehalfdark
 
 " This is required to force 24-bit color since I use a modern terminal.
 set termguicolors
