@@ -140,8 +140,8 @@ map <D-S-{> :tabprevious
 map <D-S-}> :tabprevious
 
 " Shortcut to yanking to the system clipboard
-map <leader>y "*y
-map <leader>p "*p
+map <leader>y "+y
+map <leader>p "+p
 
 " Get rid of search highlights
 noremap <silent><leader>/ :nohlsearch<cr>
