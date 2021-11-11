@@ -253,6 +253,9 @@ let g:jsx_ext_required = 0
 " JSON
 let g:vim_json_syntax_conceal = 0
 
+" Default SQL type to PostgreSQL
+let g:sql_type_default = 'pgsql'
+
 "----------------------------------------------------------------------
 " Neovim
 "----------------------------------------------------------------------
