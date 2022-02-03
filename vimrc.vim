@@ -169,25 +169,16 @@ if has("nvim")
     nnoremap <Leader>c :terminal <CR>
 endif
 
-if has("gui_running")
-    " Tabs
-    map <C-t> :tabnew<CR>
-    map <C-c> :tabclose<CR>
-    map <C-[> :tabprevious<CR>
-    map <C-]> :tabnext<CR>
-endif
+" Tabs
+nnoremap <C-t> :tabnew<CR>
+nnoremap <C-w> :tabclose<CR>
+nnoremap <C-[> :tabprevious<CR>
+nnoremap <C-]> :tabnext<CR>
 
 " CtrlP
 nnoremap <leader>t :CtrlP<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
 nnoremap <leader>l :CtrlPLine<cr>
-
-" Easymotion
-nmap <SPACE> <Plug>(easymotion-s)
-nmap <leader>j <Plug>(easymotion-bd-jk)
-nmap <leader>k <Plug>(easymotion-bd-jk)
-nmap <leader><leader>j <Plug>(easymotion-overwin-line)
-nmap <leader><leader>k <Plug>(easymotion-overwin-line)
 
 "----------------------------------------------------------------------
 " Autocommands
