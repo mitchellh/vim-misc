@@ -171,7 +171,7 @@ endif
 
 " Tabs
 nnoremap <C-t> :tabnew<CR>
-nnoremap <C-w> :tabclose<CR>
+nnoremap <C-c> :tabclose<CR>
 nnoremap <C-[> :tabprevious<CR>
 nnoremap <C-]> :tabnext<CR>
 
