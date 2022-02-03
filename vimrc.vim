@@ -250,7 +250,13 @@ let g:sql_type_default = 'pgsql'
 "----------------------------------------------------------------------
 " Neovim
 "----------------------------------------------------------------------
-" In neovim, we configure more things via Lua
 if has("nvim")
-    lua require("vim-misc")
+  " Find files using Telescope command-line sugar.
+  nnoremap <leader>ff <cmd>Telescope find_files<cr>
+  nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+  nnoremap <leader>fb <cmd>Telescope buffers<cr>
+  nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+  " In neovim, we configure more things via Lua
+  lua require("vim-misc")
 endif
