@@ -1,3 +1,8 @@
+-- Use only a single global status line. When using this, make sure to
+-- also set WinSeparator in your color theme so that the splits aren't
+-- chonky.
+vim.opt.laststatus = 3
+
 --[[
 -- Notes:
 --
