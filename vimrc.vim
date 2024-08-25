@@ -207,28 +207,6 @@ endfunc
 "----------------------------------------------------------------------
 " Plugin settings
 "----------------------------------------------------------------------
-" Airline
-let g:airline_powerline_fonts = 1
-" Don't need to set this since Dracula includes a powerline theme
-" let g:airline_theme = "powerlineish"
-
-" CtrlP
-let g:ctrlp_max_files = 10000
-if has("unix")
-    let g:ctrlp_user_command = {
-        \ 'types': {
-            \ 1: ['.git', 'cd %s && git ls-files . -co --exclude-standard'],
-            \ 2: ['.hg', 'hg --cwd %s locate -I .'],
-        \ },
-        \ 'fallback': 'find %s -type f | head -' . g:ctrlp_max_files
-    \ }
-endif
-
-let g:ctrlp_buffer_func = { 'enter': 'MyCtrlPMappings' }
-
-func! MyCtrlPMappings()
-    nnoremap <buffer> <silent> <c-@> :call <sid>DeleteBuffer()<cr>
-endfunc
 
 func! s:DeleteBuffer()
   let line = getline('.')
