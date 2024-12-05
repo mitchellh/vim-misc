@@ -78,7 +78,9 @@ if !has("gui_running")
     let &t_ut=''
 endif
 
-set guioptions=cegmt
+if !has("nvim") 
+    set guioptions=cegmt
+endif
 if has("win32")
     set guifont=Inconsolata:h11
 else
